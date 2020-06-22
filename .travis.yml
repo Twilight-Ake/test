@@ -13,6 +13,5 @@ before_install:
 script:
   - npm run build
   - echo "$DOCKER_PASSWORD" | docker login -u "$DOCKER_USERNAME" --password-stdin
-  # - docker build -t "jklolita"/pea3nut-info:latest .
-  - docker image build ./ -t dist
-  - docker container create -p 32769:80 dist
+  - docker build -t jklolita/resume:latest
+  - docker push jklolita/resume:latest
