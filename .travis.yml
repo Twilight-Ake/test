@@ -13,5 +13,5 @@ before_install:
 script:
   - npm run build
   - echo "$DOCKER_PASSWORD" | docker login -u "$DOCKER_USERNAME" --password-stdin
-  - docker build -t /dist:latest .
-  - docker push /dist:latest
+  - docker build -t jklolita/dist:latest .
+  - docker push jklolita/dist:latest
