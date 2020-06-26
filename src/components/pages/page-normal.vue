@@ -1,6 +1,6 @@
 <template>
     <div>
-        <article-header title="花生PeAの个人资料" :description="getRandomItem(Fragment.concat(FragmentNormal))" />
+        <article-header title="JKの个人资料" :description="getRandomItem(Fragment.concat(FragmentNormal))" />
         <profile-card :information="cardInfo">
             <radar-img
                     :radar-value="NormalRadarInfo"
