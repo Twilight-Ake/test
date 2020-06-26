@@ -1,2 +1,38 @@
-#test
-!/src/**
+#comment
+
+#代表根目录（上下文环境目录中）中以abc开头的任意直接子目录或者直接子文件将被忽略
+#如/abc  abc.txt
+# /abc*
+
+#代表根目录（上下文环境目录中）中任意直接子目录中以abc开头的任意直接子目录或者直接子文件将被忽略
+#如 /file/abc  /file/abc.txt
+# */abc*
+
+#代表根目录（上下文环境目录中）中任意两级目录下以abc开头的任意直接子目录或者直接子文件将被忽略
+#如 /file1/file2/abc  /file1/file2/abc.txt
+# */*/abc*
+
+#排除根目录中的文件和目录，其名称是单字符扩展名temp。例如，/tempa与/tempb被排除在外。
+# temp?	
+
+#Docker还支持一个**匹配任意数量目录（包括零）的特殊通配符字符串
+**/**
+!dist/**
+
+#以!（感叹号）开头的行可用于对排除项进行例外处理,比如原本包含了README.md这个文件的过滤，但是加了如下一行后
+#就不会再过滤README.md，依然会将其提交到守护进程。
+# !README.md
+
+#异常规则的放置位置会影响行为
+# *.md
+# !README*.md
+# README-secret.md
+#README-secret.md 仍然会被忽略
+	
+# *.md
+# README-secret.md
+# !README*.md
+#README-secret.md 不会被忽略
+
+# 您甚至可以使用该.dockerignore文件来排除Dockerfile和.dockerignore文件。这些文件仍然发送到守护程序，因为它需要它们来完成它的工作。但是ADD和COPY命令不会将它们复制到图像中。
+
